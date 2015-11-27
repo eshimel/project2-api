@@ -29,6 +29,8 @@ curl --request POST --header "Content-Type: application/json" -d '{
 ```
 curl --request DELETE --header "Authorization: Token token=c017d611187e3350baffc52d35a4df69" http://localhost:3000/logout/1
 ```
+curl --request DELETE --header "Authorization: Token token=e1e55f2a1f86f3a99c38849b1f0a1f19" http://localhost:3000/logout/1
+
 
 # Users
 

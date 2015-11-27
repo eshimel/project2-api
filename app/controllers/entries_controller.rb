@@ -1,55 +1,55 @@
 #
 class EntriesController < OpenReadController
-  before_action :set_book, only: [:update, :destroy]
+  before_action :set_entry, only: [:update, :destroy]
 
-  # GET /books
+  # GET /entries
   def index
-    @books = Book.all
+    @entries = Entry.all
 
-    render json: @books
+    render json: @entries
   end
 
-  # GET /books/1
+  # GET /entries/1
   def show
-    @book = Book.find(params[:id])
+    @entry = Entry.find(params[:id])
 
-    render json: @book
+    render json: @entry
   end
 
-  # POST /books
+  # POST /entries
   def create
-    @book = current_user.books.new(book_params) #makes this, this user's book.
+    @entry = current_user.entries.new(entry_params) #makes this, this user's entry.
 
-    if @book.save
-      render json: @book, status: :created, location: @book
+    if @entry.save
+      render json: @entry, status: :created, location: @entry
     else
-      render json: @book.errors, status: :unprocessable_entity
+      render json: @entry.errors, status: :unprocessable_entity
     end
   end
 
-  # PATCH /books/1
+  # PATCH /entries/1
   def update
-    if @book.update(book_params)
+    if @entry.update(entry_params)
       head :no_content
     else
-      render json: @book.errors, status: :unprocessable_entity
+      render json: @entry.errors, status: :unprocessable_entity
     end
   end
 
-  # DELETE /books/1
+  # DELETE /entries/1
   def destroy
-    @book.destroy
+    @entry.destroy
 
     head :no_content
   end
 
-  def set_book
-    @book = current_user.books.find(params[:id])
+  def set_entry
+    @entry = current_user.entries.find(params[:id])
   end
 
-  def book_params
-    params.require(:book).permit(:title, :isbn)
+  def entry_params
+    params.require(:entry).permit(:title, :jpost)
   end
 
-  private :set_book, :book_params
+  private :set_entry, :entry_params
 end

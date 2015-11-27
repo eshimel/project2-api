@@ -27,7 +27,7 @@ class UsersController < ApplicationController
         render json: @user.errors, status: :unprocessable_entity
       end
     else
-      head :unauthorized
+      head :unauthorized #you can't change a user that isn't you
     end
   end
 
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
       @user.destroy
       head :no_content
     else
-      head :unauthorized
+      head :unauthorized #you can't delete someone that isn't you
     end
   end
 

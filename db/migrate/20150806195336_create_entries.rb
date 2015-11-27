@@ -1,9 +1,9 @@
 #
-class CreateBooks < ActiveRecord::Migration
+class CreateEntries < ActiveRecord::Migration
   def change
-    create_table :books do |t|
+    create_table :entries do |t|
       t.string :title
-      t.string :isbn
+      t.string :jpost
       t.references :user
 
       t.timestamps null: false

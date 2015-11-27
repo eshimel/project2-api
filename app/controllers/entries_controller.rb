@@ -1,5 +1,5 @@
 #
-class BooksController < OpenReadController
+class EntriesController < OpenReadController
   before_action :set_book, only: [:update, :destroy]
 
   # GET /books
@@ -18,7 +18,7 @@ class BooksController < OpenReadController
 
   # POST /books
   def create
-    @book = current_user.books.new(book_params)
+    @book = current_user.books.new(book_params) #makes this, this user's book.
 
     if @book.save
       render json: @book, status: :created, location: @book

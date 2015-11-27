@@ -1,5 +1,6 @@
 #
 class AuthController < ApplicationController
+  #######You need line 4 and 5 for registering#####
   skip_before_action :authenticate, only: [:login, :register]
 
   # POST /login
@@ -24,6 +25,7 @@ class AuthController < ApplicationController
   end
 
   # DELETE /logout/1
+  #####This keeps a user from being able to log a different user out
   def logout
     if current_user == User.find(params[:id])
       current_user.logout
